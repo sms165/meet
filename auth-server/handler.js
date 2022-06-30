@@ -38,7 +38,7 @@ module.exports.getAuthURL = async () => {
 
   return {
     statusCode: 200,
-    Headers: {
+    headers: {
       "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
