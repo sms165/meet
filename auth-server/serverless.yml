@@ -18,7 +18,7 @@ service: auth-server
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
-frameworkVersion: "3"
+# frameworkVersion: "3"
 
 provider:
   name: aws
@@ -73,6 +73,12 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
+  # getAccessToken:
+  #   handler: handler.getAccessToken
+  #   events:
+  #     - http:
+  #         path: api/token/{code}
+  #         method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
