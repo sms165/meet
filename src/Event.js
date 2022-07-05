@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 class Event extends Component {
   state = {
-    visible: false,
+    visible: true,
+  };
+  
+  dateNewFormat = (eventDate) => {
+    const newDate = `${new Date(eventDate)}`;
+    return newDate;
   };
 
   showDetailsClick = () => {
@@ -27,7 +32,7 @@ class Event extends Component {
     return (
       <div className="event">
         <h3 className="title">{event.summary}</h3>
-        <p className="start-time">{event.start.dateTime}</p>{" "}
+        <p className="start-time">{this.dateNewFormat(event.start.dateTime)}</p>{" "}
         <p className="location">{event.location}</p>
         {!this.state.visible ? (
           <p className="description">{event.description}</p>

@@ -22,6 +22,18 @@ describe('<Event /> component', () => {
 
                 test('render event title/summary', () => {
                     expect(EventWrapper.find('.title')).toHaveLength(1);
+                }) 
+
+                test('make details visible on click',() => {
+                    EventWrapper.setState({visible:false});
+                    EventWrapper.find('.btn-details').simulate('click');
+                    expect(EventWrapper.state('visible')).toBe(true);
+                });
+
+                test('hide details on click', () => {
+                    EventWrapper.setState({visible:true});
+                    EventWrapper.find('.btn-details').simulate('click');
+                    expect(EventWrapper.state('visible')).toBe(false);
                 })
 
                 test('render start time', () => {
@@ -40,17 +52,7 @@ describe('<Event /> component', () => {
                     expect(EventWrapper.find('.btn-details')).toHaveLength(1);
                 })
 
-                test('make details visible on click',() => {
-                    EventWrapper.setState({visible:false});
-                    EventWrapper.find('.btn-details').simulate('click');
-                    expect(EventWrapper.state('visible')).toBe(true);
-                });
-
-                test('hide details on click', () => {
-                    EventWrapper.setState({visible:true});
-                    EventWrapper.find('.btn-details').simulate('click');
-                    expect(EventWrapper.state('visible')).toBe(false);
-                })
+                
                 
 
                 //test with mock data
@@ -64,7 +66,8 @@ describe('<Event /> component', () => {
                 });
 
                 test('show event start time',()=>{
-                    expect(EventWrapper.find('.start-time').text()).toEqual(mockData[0].start.dateTime)
+                    const mockDataDateFormat = `${new Date(mockData[0].start.dateTime)}`;
+                    expect(EventWrapper.find('.start-time').text()).toEqual(`${mockDataDateFormat}`)
                 });
 
                 test('show event location',()=>{
