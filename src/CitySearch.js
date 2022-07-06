@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CitySearch extends Component {
     //define class component state
     state = { 
-        query:'',
+        query:'all',
         suggestions: [],
         showSuggestions: undefined
 }
