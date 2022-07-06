@@ -63,6 +63,7 @@ describe("<App /> integration", () => {
     AppWrapper.unmount();
   });
 
+
   test("get list of events matching the city selected by the user", async () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
@@ -89,4 +90,20 @@ describe("<App /> integration", () => {
     expect(AppWrapper.state("events")).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+
+  test('pass number of events as 32 per default', () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsState = AppWrapper.state('numberOfEvents');
+    expect(NumberOfEventsState).not.toEqual(undefined);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
+    AppWrapper.unmount();
+  });
+
+  test('change numberOfEvents state when the number of events changes', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.find('.events-number').simulate('change', { target: { value: 5 } });
+    expect(AppWrapper.state('numberOfEvents')).toEqual(5);
+    AppWrapper.unmount();
+  })
 });
