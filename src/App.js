@@ -46,42 +46,7 @@ class App extends Component {
     });
 })
 }
-  // const { currentLocation, numberOfEvents } = this.state;
-  //   if (location) {
-  //     getEvents().then((response) => {
-  //       const locationEvents =
-  //         location === "all"
-  //           ? response.events
-  //           : response.events.filter((event) => event.location === location);
-  //       const events = locationEvents.slice(0, numberOfEvents);
-  //       return this.setState({
-  //         events: events,
-  //         currentLocation: location,
-  //         locations: response.locations,
-  //       });
-  //     });
-  //   } else {
-  //     getEvents().then((response) => {
-  //       const locationEvents =
-  //         currentLocation === "all"
-  //           ? response.events
-  //           : response.events.filter(
-  //               (event) => event.location === currentLocation
-  //             );
-  //       const events = locationEvents.slice(0, eventCount);
-  //       return this.setState({
-  //         events: events,
-  //         numberOfEvents: eventCount,
-  //         locations: response.locations,
-  //       });
-  //     });
-  //   }
-  // };
 
-
-
- 
-  
 
   render() {
     return (

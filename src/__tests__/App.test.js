@@ -92,13 +92,13 @@ describe("<App /> integration", () => {
   });
 
 
-  test('pass number of events as 32 per default', () => {
-    const AppWrapper = mount(<App />);
-    const NumberOfEventsState = AppWrapper.state('numberOfEvents');
-    expect(NumberOfEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
-    AppWrapper.unmount();
-  });
+  // test('pass number of events as 32 per default', () => {
+  //   const AppWrapper = mount(<App />);
+  //   const NumberOfEventsState = AppWrapper.state('numberOfEvents');
+  //   expect(NumberOfEventsState).not.toEqual(undefined);
+  //   expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
+  //   AppWrapper.unmount();
+  // });
 
   test('change numberOfEvents state when the number of events changes', async () => {
     const AppWrapper = mount(<App />);
