@@ -38,7 +38,7 @@ class Event extends Component {
           <p className="description">{event.description}</p>
         ): null}
         <button
-          className="btn-details"
+          className="btn-details "
           onClick={() => this.showDetailsClick(this.state)}
         >
           {this.changeBtnText()}
