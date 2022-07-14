@@ -52,11 +52,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>hello</p>
+        <h1>Event App</h1>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
-        /><NumberOfEvents  updateEvents={this.updateEvents} />
+        /><br/><NumberOfEvents  updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
         
       </div>
