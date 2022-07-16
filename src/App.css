@@ -4,8 +4,15 @@
   padding: 2% 5%;
 }
 
+
+
 .App * {
   box-sizing: border-box;
+
+}
+
+body{
+  /* background-color: rgb(37, 37, 37); */
 }
 
 ul {
@@ -49,15 +56,16 @@ input[type="number"] {
   position: relative;
 }
 
-.suggestions {
+ .suggestions {
   width: 250px;
   z-index: 2;
-  align-self: center;
+  position: absolute;
+   align-self: center; 
   margin: 0;
-  top: 43px;
+  top: 118px;
   font-size: 14px;
-  box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
-}
+   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75); 
+ } 
 
 .suggestions > li {
   text-align: left;
@@ -129,6 +137,8 @@ input[type="number"] {
 
 .Alert {
   margin: auto;
+  /* position: absolute;
+  top: -41px; */
 }
 
 .data-vis-wrapper {
@@ -194,6 +204,17 @@ input[type="number"] {
   font-size: 14px;
   letter-spacing: 0.2px;
   font-family: "Roboto";
+}
+
+.alert{
+  height: 2em;
+}
+
+.search-bar{
+  border: 2px solid rgb(102, 141, 150);
+  background-color: rgb(157, 180, 185);
+  width: 50vw;
+  margin: auto;
 }
 
 

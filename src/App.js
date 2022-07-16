@@ -4,14 +4,15 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
-import './nprogress.css';
+import "./nprogress.css";
+import { WarningAlert } from "./Alert";
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    currentLocation: "all" 
+    currentLocation: "all",
   };
 
   componentDidMount() {
@@ -24,41 +25,48 @@ class App extends Component {
     this.mounted = false;
   }
 
-
   updateEvents = (location, eventCount) => {
-    // const { currentLocation, numberOfEvents } = this.state; 
+    // const { currentLocation, numberOfEvents } = this.state;
     if (location === undefined) {
       location = this.state.currentLocation;
-  }
+    }
     if (eventCount === undefined) {
       eventCount = this.state.numberOfEvents;
-  } else(
-      this.setState({ numberOfEvents: eventCount })
-  )
- 
-  getEvents().then((events) => {
-    let locationEvents = location === "all" ?
-        events :
-        events.filter((event) => event.location === location);
-    this.setState({
+    } else this.setState({ numberOfEvents: eventCount });
+
+    getEvents().then((events) => {
+      let locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) => event.location === location);
+      this.setState({
         events: locationEvents.slice(0, eventCount),
         numberOfEvents: eventCount,
         currentLocation: location,
+      });
     });
-})
-}
+  };
+
+ 
+
+
 
 
   render() {
     return (
       <div className="App">
+        
         <h1>Event App</h1>
+        {!navigator.onLine && <WarningAlert infoText="The app is offline, events may not be up to date." />}
+<div className="search-bar">
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
-        /><br/><NumberOfEvents  updateEvents={this.updateEvents} />
+        />
+        <br />
+        <NumberOfEvents updateEvents={this.updateEvents} />
+        </div>
         <EventList events={this.state.events} />
-        
       </div>
     );
   }
