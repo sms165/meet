@@ -7,6 +7,7 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import "./nprogress.css";
 import { WarningAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
+import { Toggle } from "./Toggle";
 
 class App extends Component {
   state = {
@@ -59,13 +60,30 @@ class App extends Component {
     });
   };
 
+  // themeChange =()=>{
+    
+   
+  //     document.body.classList.toggle("dark-theme");
+    
+  // }
+
   render() {
+    
+
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
 
     return (
       <div className="App">
         <h1>Event App</h1>
+        <Toggle />
+        {/* <button className="btn-toggle">Dark or Light theme</button> */}
+        {/* <label class="switch">
+  <input type="checkbox" className="toggle-switch" onClick={this.themeChange} />
+  <span class="slider round"></span>
+</label> */}
+
+
         {!navigator.onLine && (
           <WarningAlert infoText="The app is offline, events may not be up to date." />
         )}
@@ -74,12 +92,13 @@ class App extends Component {
             locations={this.state.locations}
             updateEvents={this.updateEvents}
           />
-          <br />
+          
           <NumberOfEvents updateEvents={this.updateEvents} />
         </div>
         <EventList events={this.state.events} />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-getAccessToken={() => { getAccessToken() }} />
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
+ getAccessToken={() => { getAccessToken() }} />
+  
       </div>
     );
   }
