@@ -8,6 +8,7 @@ import "./nprogress.css";
 import { WarningAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
 import { Toggle } from "./Toggle";
+import { useEffect } from "react";
 
 class App extends Component {
   state = {
@@ -19,33 +20,53 @@ class App extends Component {
   };
 
   async componentDidMount() {
+    //make sure it is mounted before populating the state
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
-
-    const isTokenValid = (await checkToken(accessToken)).error ? false :
-  true;
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
-  const code = searchParams.get("code");
+    const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
         }
-  }); }
-  let checked= JSON.parse(localStorage.getItem("toggle-switch"));
-  console.log(checked);
-  document.getElementById("toggle-switch").checked=checked;
-  if (checked === true) {
-    
-    document.body.classList.add("dark-theme");
-    let pp= document.getElementById("pp");
-    pp.classList.add("dark-theme");
-   let ws= document.getElementById("ws");
-   ws.classList.add("dark-theme");
-   document.getElementById("image-bg").src='./assets/cartography-dark.svg';
-   localStorage.setItem("toggle-switch", "true")}
+      });
+    }
   }
+
+  componentDidUpdate(){
+    
+    let check= JSON.parse(localStorage.getItem("toggle-switch"));
+    console.log(check)
+    
+    console.log(document.getElementById("toggle-switch"));
+    document.getElementById("toggle-switch").checked = check;
+    if (document.getElementById("pp")) {
+      if (check === true) {
+
+        document.body.classList.add("dark-theme");
+        let pp = document.getElementById("pp");
+        pp.classList.add("dark-theme");
+        let ws = document.getElementById("ws");
+        ws.classList.add("dark-theme");
+        document.getElementById("image-bg").src = './assets/cartography-dark.svg';
+        return localStorage.setItem("toggle-switch", "true")
+      }
+
+    } else if(check===true) {
+      document.body.classList.add("dark-theme");
+      
+      return localStorage.setItem("toggle-switch", "true")
+    }else{
+      
+      return localStorage.setItem("toggle-switch", "false")
+    }
+  }
+    // });
+
+    
   
   componentWillUnmount() {
     this.mounted = false;
@@ -79,6 +100,8 @@ class App extends Component {
   //     document.body.classList.toggle("dark-theme");
     
   // }
+  
+  
 
   render() {
     
@@ -110,9 +133,9 @@ class App extends Component {
           <NumberOfEvents updateEvents={this.updateEvents} />
         </div>
         <EventList events={this.state.events} />
-        {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
  getAccessToken={() => { getAccessToken() }} />
-   */}
+  
       </div>
     );
   }
