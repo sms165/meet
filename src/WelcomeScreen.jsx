@@ -35,7 +35,7 @@ function WelcomeScreen(props) {
     <div className="WelcomeScreen " id="ws">
         
       <h1>Welcome to the Meet app</h1>
-      <Toggle />
+      {/* <Toggle /> */}
       {/* <label class="switch">
   <input type="checkbox" className="toggle-switch" onClick={themeChange} />
   <span class="slider round"></span>

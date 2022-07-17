@@ -21,6 +21,7 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
+
     const isTokenValid = (await checkToken(accessToken)).error ? false :
   true;
     const searchParams = new URLSearchParams(window.location.search);
@@ -32,6 +33,18 @@ class App extends Component {
           this.setState({ events, locations: extractLocations(events) });
         }
   }); }
+  let checked= JSON.parse(localStorage.getItem("toggle-switch"));
+  console.log(checked);
+  document.getElementById("toggle-switch").checked=checked;
+  if (checked === true) {
+    
+    document.body.classList.add("dark-theme");
+    let pp= document.getElementById("pp");
+    pp.classList.add("dark-theme");
+   let ws= document.getElementById("ws");
+   ws.classList.add("dark-theme");
+   document.getElementById("image-bg").src='./assets/cartography-dark.svg';
+   localStorage.setItem("toggle-switch", "true")}
   }
   
   componentWillUnmount() {
@@ -75,8 +88,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        {<Toggle />}
         <h1>Event App</h1>
-        <Toggle />
+        {/* <Toggle /> */}
         {/* <button className="btn-toggle">Dark or Light theme</button> */}
         {/* <label class="switch">
   <input type="checkbox" className="toggle-switch" onClick={this.themeChange} />
@@ -96,9 +110,9 @@ class App extends Component {
           <NumberOfEvents updateEvents={this.updateEvents} />
         </div>
         <EventList events={this.state.events} />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
+        {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
  getAccessToken={() => { getAccessToken() }} />
-  
+   */}
       </div>
     );
   }
