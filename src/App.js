@@ -8,7 +8,7 @@ import "./nprogress.css";
 import { WarningAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
 import { Toggle } from "./Toggle";
-import { useEffect } from "react";
+
 
 class App extends Component {
   state = {
