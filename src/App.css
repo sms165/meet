@@ -123,6 +123,23 @@ input[type="number"] {
   justify-content: center;
 }
 
+/* charts */
+.data-vis-section{
+  border: 2px ;
+  margin: 10px;
+}
+.data-vis-title{
+  text-align: center;
+  
+  margin-top: 5px;
+}
+.data-vis-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
 
 
 /* slider */

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
-     ResponsiveContainer, PieChart, Pie, Sector, Tooltip, Cell
+     ResponsiveContainer, PieChart, Pie,  Tooltip, Cell
   } from 'recharts';
 
 
