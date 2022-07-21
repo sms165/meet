@@ -23,17 +23,20 @@ body.dark-theme{
   display: block;
 }
 
+
 .search-bar {
   display: flex;
   justify-content: center;
 }
 
 .CitySearch {
-  padding: 5px;
+  
+  padding: 0 5vw 0 5vw;
 }
 
 .numberOfEvents {
-  padding: 5px;
+  padding: 0 5vw 0 5vw;
+  
 }
 
 ul {
@@ -50,11 +53,7 @@ ul {
   position: relative;
 }
 
-.Alert {
-  height: 4em;
-  width: 20vw;
-  font-size: smaller;
-}
+
 
 input[type="text"],
 input[type="number"] {
@@ -69,7 +68,7 @@ input[type="number"] {
 .suggestions {
   
   z-index: 2;
-  position: absolute;
+  /* position: absolute; */
    align-self: center; 
   margin: 0;
   font-size: 14px;
@@ -118,6 +117,10 @@ input[type="number"] {
   outline: none;
   cursor: pointer;
 
+}
+
+.offline{
+  justify-content: center;
 }
 
 
@@ -193,6 +196,34 @@ input:checked + .slider:before {
   top: 10px;
  
 }
+
+@media only screen and (min-width: 461px) {
+.offline{
+  align-items: center;
+}
+
+  .Alert {
+    height: 3em;
+    width: 200px;
+    justify-content: center;
+    font-size: smaller;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .search-bar{
+    display: block;
+
+  }
+
+  .Alert{
+    
+    font-size: smaller;
+  }
+
+
+}
+
 
 
 /* .App {

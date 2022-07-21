@@ -41,11 +41,11 @@ class CitySearch extends Component {
   render() { 
     return (
       <div className="CitySearch">
-        
+         <div className="Alert">
        <InfoAlert text={this.state.infoText} />
-       
+       </div>
  
-        <p>City Search</p>  
+        <p>City Search:</p>  
           <input type="text" className="city" value={this.state.query} onChange={this.handleInputChanged} onFocus={() => { this.setState({ showSuggestions: true }) }} />
           <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
           {this.state.suggestions.map((suggestion) => (

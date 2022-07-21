@@ -1,5 +1,5 @@
 import React from "react";
-import { Toggle } from "./Toggle";
+// import { Toggle } from "./Toggle";
 // import map from "./assets/cartography.svg";
 // import mapDark from "./assets/cartography-dark.svg";
 import "./WelcomeScreen.css";

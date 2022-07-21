@@ -3,7 +3,7 @@ import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+import { getEvents, extractLocations, checkToken, getAccessToken} from "./api";
 import "./nprogress.css";
 import { WarningAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
@@ -94,14 +94,7 @@ class App extends Component {
     });
   };
 
-  // themeChange =()=>{
-    
-   
-  //     document.body.classList.toggle("dark-theme");
-    
-  // }
-  
-  
+
 
   render() {
     
@@ -111,27 +104,24 @@ class App extends Component {
 
     return (
       <div className="App">
+        <br/>
         {<Toggle />}
+        <br/>
         <h1>Event App</h1>
-        {/* <Toggle /> */}
-        {/* <button className="btn-toggle">Dark or Light theme</button> */}
-        {/* <label class="switch">
-  <input type="checkbox" className="toggle-switch" onClick={this.themeChange} />
-  <span class="slider round"></span>
-</label> */}
-
-
-        {!navigator.onLine && (
-          <WarningAlert infoText="The app is offline, events may not be up to date." />
-        )}
+        {!navigator.onLine && <><div className="offline">
+          <WarningAlert text="The app is offline, events may not be up to date." /> </div></>
+        }
+      
+       
         <div className="search-bar">
           <CitySearch
             locations={this.state.locations}
             updateEvents={this.updateEvents}
           />
           
-          <NumberOfEvents updateEvents={this.updateEvents} />
+          <NumberOfEvents updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} />
         </div>
+        
         <EventList events={this.state.events} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
  getAccessToken={() => { getAccessToken() }} />
