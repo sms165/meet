@@ -67,8 +67,8 @@ input[type="number"] {
 
 .suggestions {
   
-  z-index: 2;
-  /* position: absolute; */
+  z-index: 1000;
+  position: absolute;
    align-self: center; 
   margin: 0;
   font-size: 14px;
@@ -236,6 +236,13 @@ input:checked + .slider:before {
   .Alert{
     
     font-size: smaller;
+  }
+
+  .data-vis-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+    
   }
 
 
