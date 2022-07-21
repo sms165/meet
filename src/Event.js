@@ -34,8 +34,16 @@ class Event extends Component {
         <h3 className="title">{event.summary}</h3>
         <p className="start-time">{this.dateNewFormat(event.start.dateTime)}</p>{" "}
         <p className="location">{event.location}</p>
-        {!this.state.visible ? (
-          <p className="description">{event.description}</p>
+        {!this.state.visible ? (<>
+          <p className="description">{event.description}</p>  
+          <a
+            className="calendar-link"
+            href={event.htmlLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            See details on Google Calendar
+          </a></>
         ): null}
         <button
           className="btn-details "
