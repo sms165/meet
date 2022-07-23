@@ -3,6 +3,30 @@
 ## Description
 To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
+## What technology did I use and why?
+
+I used **React** for my meet application and the Google calendar API. The main reasons are
+* type of application: I need a library helping me build the UI of my app. React is suited best for the view side of the mvc approach and its virtual DOM ensures faster rendering of views
+* scope: The component-based nature of React allows me to increase the scope of my web application with little to no performance issues or concerns about entropy.
+* good documentation: for a beginner like me, it is important that the tools I use are well documented, so that I can understand the different components I work with. Another factor in my decision was, that it is kept up to date. In case of a library developed and maintained by Facebook, that is not a problem.
+* popularity: React is in high demand at the moment. This can be seen in job ad, the stars on GitHub (187k) as well as the contributions to stack overflow. This support in the developer community ensures that Il will eventually find solutions when troubleshooting.
+* mobile version: with its associated ecosystem of tools, React is also a good springboard for my next project, where I want to use React Native for a mobile application. So getting familiar with React first is valuable.
+
+
+I created the application using the **Create React App** boilerplate, enabling the pwa template to transfer the app into a PWA in the development process:
+```bash
+npx create-react-app meet --template cra-template-pwa --use-npm
+```
+
+## Key features
+
+* Filter events by city.
+* Show/hide event details.
+* Specify number of events.
+* Use the app when offline.
+* Add an app shortcut to the home screen.
+* View a chart showing the number of upcoming events by city.
+
 ## User stories and test scenarios
 
 #### User stories format:
