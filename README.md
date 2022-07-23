@@ -5,7 +5,7 @@ To build a serverless, progressive web application (PWA) with React using a test
 
 ## What technology did I use and why?
 
-I used **React** for my meet application and the Google calendar API. The main reasons are
+I used **React** for my meet application.  The main reasons are
 * type of application: I need a library helping me build the UI of my app. React is suited best for the view side of the mvc approach and its virtual DOM ensures faster rendering of views
 * scope: The component-based nature of React allows me to increase the scope of my web application with little to no performance issues or concerns about entropy.
 * good documentation: for a beginner like me, it is important that the tools I use are well documented, so that I can understand the different components I work with. Another factor in my decision was, that it is kept up to date. In case of a library developed and maintained by Facebook, that is not a problem.
@@ -17,6 +17,17 @@ I created the application using the **Create React App** boilerplate, enabling t
 ```bash
 npx create-react-app meet --template cra-template-pwa --use-npm
 ```
+I used **AWS Lambda** to create serverless functions, which allows a function to be deployed individually in the cloud. In this App it is used for communication to the Google Calendar API
+
+For the API I used the **Google Calendar API** which is a protected API so to access it I needded to implement the **OAuth2 protocol**
+
+For the unit testing I used **Jest** I used this as it is included by default in the create-react-app. I also installed **Enzyme** as this allows for shallow rendering (allows the rendering of components "one level deep".
+
+To complete the User Acceptance test to test BDD Behavior Driven Development I used **Jest-Cucumber** a test runner. 
+
+Lastly I performed end-to-end testing to ensure that the app works in its entirety. It allows the stimulation of the whole app cylce from opening to closing. For this I used **Puppeteer** as it also works well with Jest.
+
+
 
 ## Key features
 
@@ -157,3 +168,128 @@ So that **I can have a better overview of the events in each city**
 * **Given** user is on the app 
 * **When** the user wants to have a better overview of the number of events in each city
 * **Then** the app will display charts with the information
+
+## What challenges did I face, what did I learn?
+* I learned to program using TDD Test Driven Development, in which I first wrote tests then the code to fulfill these tests.
+* The challenges I encountered was implementing a switch for light and dark mode on top of the app. Since to login it redirects to the google login I had to save the users preference in localStorage so that the preferred mode is still in place when the page loads again.
+
+## How to install and run the project ...
+
+### ... as a developer, who wants to work with the project
+1. Clone or download repository ...
+```bash
+git clone https://github.com/sms165/meet.git
+```
+
+2. Connect to your github pages 
+Follow the instructions provided by github: https://pages.github.com 
+
+3. Edit homepage address in package.json to fit to your github account
+
+4. To run app on localhost:
+```bash
+npm run start
+```
+
+5. To push changes to github pages
+```bash
+npm run deploy
+```
+
+### ... to access the already hostet the live app:
+https://sms165.github.io/meet/
+
+## Technical Requirements (according to project brief)
+* React application
+* Built using TDD technique
+* Use the Google Calendar API and OAuth2 authentication flow.
+* Use use serverless functions (AWS lambda is preferred) for the authorization server instead of using a traditional server
+* Work offline or in slow network conditions with the help of a service worker.
+* Use React axios and async/await.
+* Implement an alert system using an OOP approach to show information to the user.
+* Make use of data visualization using the recharts library.
+* Be monitored using an online monitoring tool.
+
+
+## Development Process for the meet-app
+
+### Create test scenarios for each user story
+__See above__
+
+### Create serverless functions to adhere to Google OAuth2 authentication flow
+#### Create a Oauth Consumer
+1. Create new project in Google's API console
+2. Enable Google Calendar API
+3. Create credentials
+4. Add scopes
+5. Add origin and URI to app's domain
+6. Add test users
+7. Download credentials (client_secret_.json file)
+
+#### Verify app's domain
+Download the HTML verification file from Google developer console and add to /public folder in app
+
+#### Create a serverless service
+1. Install serverless toolkit: 
+```bash
+npm install -g serverless
+```
+2. Set up server directory:
+```bash
+# Create a new serverless service/project using aws-nodejs
+serverless create --template aws-nodejs --path auth-server
+# Jump into the newly created directory
+cd auth-server
+# Then create a package.json
+npm init
+# You can simply press the Enter key through all the options here.
+```
+3. Add config.json to .gitignore file
+
+#### Configure AWS credentials
+1. Go to AWS console
+2. Navigate to 'My security credentials'
+3. Create new access key & download file
+4. Configure credentials for serverless:
+```bash
+serverless config credentials --provider aws --key ACCESS_KEY_ID --secret SECRET_ACCESS_KEY
+```
+
+#### Add secrets to config.json file
+1. Within server directory, create config.json file
+2. Add credentials stored in client_secret_.json file to config.file
+3. Add Calendar ID of calendar that will be used in application to config.file
+
+#### Set up serverless file
+
+#### Install Google APIs package 
+```bash
+npm install googleapis 
+```
+
+#### Set up handler.js file with serverless functions
+
+#### Deploy serverless
+```bash
+serverless deploy
+```
+
+#### Obtain serverless API endpoints
+```bash
+serverless info
+```
+
+### Unit testing
+* Using test scenarios, write frontend unit tests using mock data, to test key features.
+
+### Integration testing
+* Write integration tests to test the interaction between the app’s React components.
+* Write integration tests to test the data received from the mock API.
+
+### User Acceptance & End-to-end tesing
+
+### Transform applications into PWA Progressive Web Application
+* In src/index.js file, register service worker by changing from serviceWorkerRegistration.unregister() to serviceWorkerRegistration.register()
+* Add app infos to manifest.json
+
+### Add data visualization using Recharts
